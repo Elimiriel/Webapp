@@ -1,6 +1,12 @@
 {
     "java.project.sourcePaths": [
-        "JSP/Java Resources/src",
         "JSP"
+    ],
+    "java.project.referencedLibraries": [
+        "JSP\\lib\\javax.servlet-api-4.0.1.jar"
+    ],
+    "open-php-html-js-in-browser.documentRootFolder": "D:\\Onedrive\\Personal\\OneDrive\\()programming\\Webapp\\JSP\\",
+    "open-php-html-js-in-browser.alternativeDocumentRootFolders": [
+        "D:\\Onedrive\\Personal\\OneDrive\\()programming\\Webapp\\JSP\\src\\main\\Webapp\\"
     ]
 }
