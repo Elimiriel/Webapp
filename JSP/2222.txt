@@ -1,0 +1,53 @@
+// Ex03.jsp 페이지에서 넘어온 데이터를 받아주자
+		String member_id = request.getParameter("id");
+		String member_pwd = request.getParameter("pwd");
+		String member_name = request.getParameter("name");
+		String member_phone = request.getParameter("phone");
+		String member_addr = request.getParameter("addr");
+		
+		// 응답을 할 때 한글 깨짐 방지 설정
+		response.setContentType("text/html; charset=UTF-8");
+		
+		PrintWriter out = response.getWriter();
+		
+		out.println("<html>");
+		out.println("<head></head>");
+		out.println("<body>");
+		out.println("<div align='center'>");
+		
+		out.println("<h2>회원 정보</h2>");
+		out.println("<table border = '1'>");
+		
+		out.println("<tr>");
+		out.println("<th>회원 아이디</th>");
+		out.println("<td>" + member_id + "</td>");
+		
+		out.println("<tr>");
+		out.println("<th>회원 비밀번호</th>");
+		out.println("<td>"+member_pwd+"</td>");
+		out.println("</tr>");
+		
+		out.println("<tr>");
+		out.println("<th>회원 이름</th>");
+		out.println("<td>"+member_name+"</td>");
+		out.println("</tr>");
+		
+		out.println("<tr>");
+		out.println("<th>회원 연락처</th>");
+		out.println("<td>"+member_phone+"</td>");
+		out.println("</tr>");
+		
+		out.println("<tr>");
+		out.println("<th>회원 주소</th>");
+		out.println("<td>"+member_addr+"</td>");
+		out.println("</tr>");
+		
+		
+		
+		
+		
+		
+		out.println("</table>");
+		out.println("</body>");
+		out.println("</div>");
+		out.println("</html>");

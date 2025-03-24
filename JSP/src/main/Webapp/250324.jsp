@@ -29,6 +29,17 @@
 <td><th>Addr
 </th>
 <td><input type="text" name="addr">
+<th>Hobby
+<td>
+    <input type="checkbox" name="hobby" value="여행">여행&nbsp;
+    <input type="checkbox" name="hobby" value="독서">독서&nbsp;
+    <input type="checkbox" name="hobby" value="산책">산책&nbsp;
+    <input type="checkbox" name="hobby" value="수면">수면&nbsp;
+    <input type="checkbox" name="hobby" value="게임">게임&nbsp;
+    <input type="checkbox" name="hobby" value="TV">TV&nbsp;
+    <%--checkbox becomes Array--%>
+</td>
+</th>
 </td>
 </tr>
 <td colspan="2" align="center"><input type="submit" name="register">
