@@ -88,4 +88,53 @@ public class StudentDAO {
         }
         return result;
     }
+    public StudentDTO findstudent(String info) {
+        StudentDTO dto = null;
+        //command
+        sql = "select * from student where ? like ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, "*");
+            ps.setString(2, "%"+info+"%");
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                dto = new StudentDTO();
+                dto.setName(rs.getString("name"));
+                dto.setAge(rs.getInt("age"));
+                dto.setAddress(rs.getString("address"));
+                dto.setEmail(rs.getString("email"));
+                dto.setPhone(rs.getString("phone"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //disconnect
+        try {
+            ps.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dto;
+    }
+    public StudentDTO delStudent(StudentDTO dto, String info) {
+        //command
+        sql = "delete from student where ? like ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, "dto.rowid");
+            ps.setString(2, "%"+info+"%");
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //disconnect
+        try {
+            ps.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dto;
+    }
 }

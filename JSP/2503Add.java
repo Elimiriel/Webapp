@@ -1,13 +1,15 @@
-package goott;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import JavaReferences.src.main.java.global.controller.model.src.main.StudentDTO;
 
 
 /*
@@ -177,3 +179,43 @@ public class LoginServlet extends HttpServlet {
 	}
 
 }
+
+// 학번에 해당하는 학생의 정보를 조회하는 메서드(out of class in now)
+public StudentDTO getStudent(String hakbun) {
+		
+	StudentDTO dto = null;
+	
+	try {
+		// 넘겨받은 학번을 조건으로 해서 정보를 찾는다.
+		sql = "select * from student where hakbun = ?";
+		
+		pstmt = con.prepareStatement(sql);
+		
+		pstmt.setString(1, hakbun);
+		
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			
+			// 검색된 학생의 자료를 객체로 만든다.
+			dto = new StudentDTO();
+			
+			dto.setHakbun(rs.getString("hakbun"));
+			dto.setName1(rs.getString("name1"));
+			dto.setMajor(rs.getString("major"));
+			dto.setPhone(rs.getString("phone"));
+			dto.setAddr(rs.getString("addr"));
+			dto.setRegdate(rs.getString("regdate"));
+			
+		}
+		
+		rs.close(); pstmt.close(); con.close();
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	return dto;
+	
+} // getStudent() 메서드 end
